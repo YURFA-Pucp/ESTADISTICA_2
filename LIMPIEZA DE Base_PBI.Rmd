@@ -17,17 +17,14 @@ dataPBI=dataPBI[,c(1,13,14, 15)]
 ```{r}
 str(dataPBI)
 ```
-
-Cambio de nombre de la columna de pais
 ```{r}
+#Cambio de nombre de la columna de pais
 names(dataPBI)[names(dataPBI)=="CountryName"]="Pais"
-```
-Borrar las tildes de la columna de los países 
-```{r}
+#Borrar las tildes de la columna de los países 
 library (stringi)
 dataPBI$Pais=stri_trans_general(dataPBI$Pais,"Latin-ASCII")
 ```
-Merge para obtener solo países de Latinoamérica 
+DATA CON SOLO PAÍSES DE AMÉRICA LATINA
 ```{r}
 #Primero: bajo la base 
 Excel="https://github.com/YURFA-Pucp/ESTADISTICA_2/raw/master/Latinoam%C3%A9rica.xlsx"
@@ -40,7 +37,9 @@ str(dataAL)
 dataAL[13,1]="Republica Dominicana"
 ##Quito tildes}
 dataAL$Pais=stri_trans_general(dataAL$Pais,"Latin-ASCII")
-#Segundo, realizo el merge
+```
+REALIZO EL MERGE
+```{r}
 Base_Final=merge(dataAL,dataPBI) 
 #Borro la segunda fila, que por ahora todavía no es útil
 Base_Final$Dimension=NULL
