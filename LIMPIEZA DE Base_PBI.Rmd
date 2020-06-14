@@ -4,11 +4,14 @@ BAJO LA BASE A TRAVÉS DE LINK DE GITHUB
 lkXLSX="https://github.com/YURFA-Pucp/ESTADISTICA_2/raw/master/Base_PBI_Estadistica2.xlsx"
 dataPBI=import(lkXLSX)
 ```
+LIMPIEZA DE BASE
 ```{r}
+#Borro espacios en los nombres de las bases 
 names(dataPBI)=gsub(" ","",names(dataPBI))
 names(dataPBI)
 ```
 ```{r}
+#Me quedo solo con algunas filas
 dataPBI=dataPBI[,c(1,13,14, 15)]
 ```
 ```{r}
